@@ -1866,7 +1866,7 @@ class ResultTest extends ServiceTest {
                 .statusCode(200);
 
         // Test avoid_countries with ISO 3166-1 Alpha-2 parameters
-        options.put("avoid_countries", constructFromPipedList("AT|FR"));
+        options.put("avoid_countries", constructFromPipedList("XA|XC"));
         given()
                 .config(JSON_CONFIG_DOUBLE_NUMBERS)
                 .headers(CommonHeaders.jsonContent)
@@ -1881,7 +1881,7 @@ class ResultTest extends ServiceTest {
                 .statusCode(200);
 
         // Test avoid_countries with ISO 3166-1 Alpha-3 parameters
-        options.put("avoid_countries", constructFromPipedList("AUT|FRA"));
+        options.put("avoid_countries", constructFromPipedList("XXA|XXC"));
         given()
                 .config(JSON_CONFIG_DOUBLE_NUMBERS)
                 .headers(CommonHeaders.jsonContent)
