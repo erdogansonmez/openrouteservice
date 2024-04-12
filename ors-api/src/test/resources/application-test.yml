@@ -12,7 +12,7 @@ ors:
       maximum_intervals: 10
 
   engine:
-    source_file: ./src/test/files/heidelberg.osm.gz
+    source_file: ./src/test/files/heidelberg.ors.pbf
     graphs_root_path: graphs-apitests
     elevation:
       cache_path: ./src/test/files/elevation
