@@ -14,6 +14,7 @@
 package org.heigit.ors.routing.graphhopper.extensions;
 
 import com.carrotsearch.hppc.LongArrayList;
+import com.graphhopper.coll.GHLongObjectHashMap;
 import com.graphhopper.reader.ReaderNode;
 import com.graphhopper.reader.ReaderWay;
 import com.graphhopper.reader.osm.OSMReader;
@@ -39,9 +40,7 @@ public class ORSOSMReader extends OSMReader {
     private boolean processNodeTags;
     private final OSMDataReaderContext readerCntx;
 
-    //FIXME: big regular hashmaps should be avoided because they don't support MMAP
-    private final HashMap<Long, HashMap<String, String>> nodeTags = new HashMap<>();
-
+    private final GHLongObjectHashMap<Map<String, String>> nodeTags = new GHLongObjectHashMap<>(200, 0.5);
     private boolean processGeom = false;
     private boolean processSimpleGeom = false;
     private boolean processWholeGeom = false;
@@ -171,7 +170,6 @@ public class ORSOSMReader extends OSMReader {
      */
     @Override
     public void onProcessWay(ReaderWay way) {
-
         Map<Integer, Map<String, String>> tags = new HashMap<>();
         ArrayList<Coordinate> coords = new ArrayList<>();
         ArrayList<Coordinate> allCoordinates = new ArrayList<>();
@@ -189,7 +187,7 @@ public class ORSOSMReader extends OSMReader {
                 long id = osmNodeIds.get(i);
                 // replace the osm id with the internal id
                 int internalId = getNodeMap().get(id);
-                HashMap<String, String> tagsForNode = nodeTags.get(id);
+                Map<String, String> tagsForNode = nodeTags.get(id);
 
                 if (tagsForNode != null) {
                     tags.put(internalId, nodeTags.get(id));
