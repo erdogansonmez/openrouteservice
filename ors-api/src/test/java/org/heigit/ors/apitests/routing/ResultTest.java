@@ -3089,7 +3089,7 @@ class ResultTest extends ServiceTest {
         // Close to a border crossing
         given()
                 .headers(CommonHeaders.jsonContent)
-                .pathParam("profile", getParameter("carProfile"))
+                .pathParam("profile", "driving-hgv")
                 .body(body.toString())
                 .when()
                 .post(getEndPointPath() + "/{profile}/json")

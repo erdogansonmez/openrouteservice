@@ -69,7 +69,6 @@ ors:
           Tollways:
           Borders:
             preprocessed: true
-            boundaries: ./src/test/files/borders/borders.geojson
             ids: ./src/test/files/borders/ids.csv
             openborders: ./src/test/files/borders/openborders.csv
           RoadAccessRestrictions:
