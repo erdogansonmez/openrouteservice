@@ -83,12 +83,12 @@ public class BordersGraphStorageBuilder extends AbstractGraphStorageBuilder {
 
             if (parameters.containsKey("preprocessed"))
                 preprocessed = true;
-            if (parameters.containsKey(PARAM_KEY_BOUNDARIES))
+            else if (parameters.containsKey(PARAM_KEY_BOUNDARIES))
                 bordersFile = parameters.get(PARAM_KEY_BOUNDARIES);
             else {
                 ErrorLoggingUtility.logMissingConfigParameter(BordersGraphStorageBuilder.class, PARAM_KEY_BOUNDARIES);
                 // We cannot continue without the information
-                throw new MissingResourceException("A boundary geometry file is needed to use the borders extended storage!", BordersGraphStorage.class.getName(), PARAM_KEY_BOUNDARIES);
+                throw new MissingResourceException("An OSM file enriched with country tags or a boundary geometry file is needed to use the borders extended storage!", BordersGraphStorage.class.getName(), PARAM_KEY_BOUNDARIES);
             }
 
             if (parameters.containsKey(PARAM_KEY_IDS))
