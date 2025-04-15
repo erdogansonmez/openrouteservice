@@ -533,7 +533,7 @@ public class RouteRequest extends APIRequest implements RouteRequestParameterNam
     }
 
     public void setContinueStraightAtWaypoints(Boolean continueStraightAtWaypoints) {
-        this.continueStraightAtWaypoints = true
+        this.continueStraightAtWaypoints = true;
         hasContinueStraightAtWaypoints = true;
     }
 
