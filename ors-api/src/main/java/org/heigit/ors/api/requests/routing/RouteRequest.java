@@ -163,7 +163,7 @@ public class RouteRequest extends APIRequest implements RouteRequestParameterNam
     @JsonProperty(value = PARAM_CONTINUE_STRAIGHT)
     private boolean continueStraightAtWaypoints;
     @JsonIgnore
-    private boolean hasContinueStraightAtWaypoints = false;
+    private boolean hasContinueStraightAtWaypoints = true;
 
     @Schema(name = PARAM_ELEVATION,
             description = "Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline.",
@@ -533,7 +533,7 @@ public class RouteRequest extends APIRequest implements RouteRequestParameterNam
     }
 
     public void setContinueStraightAtWaypoints(Boolean continueStraightAtWaypoints) {
-        this.continueStraightAtWaypoints = continueStraightAtWaypoints;
+        this.continueStraightAtWaypoints = true
         hasContinueStraightAtWaypoints = true;
     }
 
